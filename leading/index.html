@@ -62,20 +62,19 @@
             <a href="https://example.com">Visit Our Website</a>
         </div>
     </div>
-    <script>
-        const playerInstance = jwplayer('my-video');
+    <div id="my-video"></div>
 
-        // Configure JW Player with VAST tag
-        playerInstance.setup({
-            advertising: {
-                client: "vast",
-                tag: "https://anewfeedliberty.com/ceef/gdt3g0/tbt/2035816/tlk.xml" // Your VAST tag URL
-            },
-            file: "URL_VIDEO_FROM_VAST", // Use a fallback video URL if needed
-            width: "100%",
-            height: "auto",
-            primary: "html5"
-        });
-    </script>
+<script>
+    jwplayer("my-video").setup({
+        file: "https://path-to-your-video.mp4", // Ganti dengan URL video Anda
+        width: "640",
+        height: "360",
+        advertising: {
+            client: "vast",
+            tag: "https://anewfeedliberty.com/ceef/gdt3g0/tbt/2035816/tlk.xml" // Ganti dengan URL VAST tag Anda
+        }
+    });
+</script>
+
 </body>
 </html>
