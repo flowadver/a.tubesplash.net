@@ -1,0 +1,24 @@
+name: Update VAST Tag
+
+on:
+  schedule:
+    - cron: '*/1 * * * *'  # Setiap 1 menit (diubah menjadi sesuai kebutuhan)
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Fetch VAST tag
+        run: |
+          curl -o vast_tag.xml https://anewfeedliberty.com/ceef/gdt3g0/tbt/2035816/tlk.xml
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "flowadver@gmail.com"
+          git config --local user.name "flowadver"
+          git add vast_tag.xml
+          git commit -m "Update VAST tag" || echo "No changes to commit"
+          git push
