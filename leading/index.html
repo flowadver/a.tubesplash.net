@@ -26,11 +26,12 @@
         .container {
             padding: 50px 20px;
         }
-        #video-container {
+        #my-video {
             width: 100%;
             max-width: 700px;
             margin: 0 auto;
-            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         .cta {
             margin-top: 20px;
@@ -47,7 +48,7 @@
             background-color: #218838;
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/vast-client@2.1.3/dist/vast-client.min.js"></script>
+    <script src="https://cdn.jwplayer.com/libraries/your-player-library.js"></script>
 </head>
 <body>
     <header>
@@ -55,29 +56,25 @@
     </header>
     <div class="container">
         <h2>Watch Our Exciting Video Below!</h2>
-        <div id="video-container"></div>
+        <div id="my-video"></div>
         <div class="cta">
             <h3>Enjoyed the video? Check out more!</h3>
             <a href="https://example.com">Visit Our Website</a>
         </div>
     </div>
     <script>
-        const vastTagUrl = 'https://anewfeedliberty.com/ceef/gdt3g0/tbt/2035816/tlk.xml'; // Your VAST tag URL
-        const videoContainer = document.getElementById('video-container');
+        const playerInstance = jwplayer('my-video');
 
-        // Initialize VAST Client
-        const vastClient = new VASTClient();
-
-        // Load VAST ad
-        vastClient.load(vastTagUrl).then((ads) => {
-            const ad = ads[0]; // Get the first ad
-            const videoAd = document.createElement('video');
-            videoAd.src = ad.mediaFiles[0].url; // Use the first media file
-            videoAd.controls = true;
-            videoContainer.appendChild(videoAd);
-            videoAd.play();
-        }).catch((error) => {
-            console.error('Error loading VAST ad:', error);
+        // Configure JW Player with VAST tag
+        playerInstance.setup({
+            advertising: {
+                client: "vast",
+                tag: "https://anewfeedliberty.com/ceef/gdt3g0/tbt/2035816/tlk.xml" // Your VAST tag URL
+            },
+            file: "URL_VIDEO_FROM_VAST", // Use a fallback video URL if needed
+            width: "100%",
+            height: "auto",
+            primary: "html5"
         });
     </script>
 </body>
