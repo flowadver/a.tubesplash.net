@@ -1,0 +1,26 @@
+name: Fetch VAST XML
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Menjalankan setiap jam
+  workflow_dispatch:  # Memungkinkan manual trigger
+
+jobs:
+  fetch-vast:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Fetch VAST XML
+        run: |
+          curl -o vast.xml https://anewfeedliberty.com/ceef/gdt3g0/tbt/2035816/tlk.xml
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add vast.xml
+          git commit -m 'Update VAST XML' || echo "No changes to commit"
+          git push
