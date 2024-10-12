@@ -17,8 +17,8 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --local user.email "your_email@example.com"
-          git config --local user.name "Your Name"
+          git config --local user.email "flowadver@gmail.com"
+          git config --local user.name "flowadver"
           git add vast_tag.xml
           git commit -m "Update VAST tag" || echo "No changes to commit"
           git push
