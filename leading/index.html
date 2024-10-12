@@ -48,8 +48,7 @@
             background-color: #218838;
         }
     </style>
- <link rel="stylesheet" href="https://cdn.fluidplayer.com/1.6.0/fluidplayer.min.css">
-    <script src="https://cdn.fluidplayer.com/1.6.0/fluidplayer.min.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelementplayer.min.css" />
 </head>
 <body>
     <header>
@@ -57,28 +56,31 @@
     </header>
     <div class="container">
         <h2>Watch Our Exciting Video Below!</h2>
-        <div id="my-video"></div>
+     <video id="videoPlayer" width="640" height="360" controls>
+        <source src="https://cdn77-vid-mp4.xvideos-cdn.com/CqkNAUA3U9B0rYhcC1CweA==,1728756761/videos/mp4/9/3/7/xvideos.com_937bf561d259ba0133a3be1b888b3e24.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+    </video>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement-and-player.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mediaelement-vast@1.0.0/mediaelement-vast.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var player = new MediaElementPlayer('videoPlayer', {
+                success: function(mediaElement, originalNode) {
+                    // Set VAST tag URL
+                    mediaElement.vast({
+                        vastUrl: 'https://anewfeedliberty.com/ceef/gdt3g0/tbt/2035816/tlk.xml'
+                    });
+                }
+            });
+        });
+    </script>
         <div class="cta">
             <h3>Enjoyed the video? Check out more!</h3>
             <a href="https://example.com">Visit Our Website</a>
         </div>
     </div>
-    <script>
-    const player = fluidPlayer("my-video", {
-        sources: [{
-            src: "https://cdn77-vid-mp4.xvideos-cdn.com/CqkNAUA3U9B0rYhcC1CweA==,1728756761/videos/mp4/9/3/7/xvideos.com_937bf561d259ba0133a3be1b888b3e24.mp4", // Ganti dengan URL video Anda
-            type: "video/mp4"
-        }],
-        advertising: {
-            adSet: [{
-                ad: {
-                    vast: "https://anewfeedliberty.com/ceef/gdt3g0/tbt/2035816/tlk.xml" // Ganti dengan URL VAST tag Anda
-                }
-            }]
-        }
-    });
-</script>
-
+    
 
 </body>
 </html>
