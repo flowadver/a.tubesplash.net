@@ -5,23 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting</title>
     <script type="text/javascript">
+        // Fungsi untuk mendapatkan parameter dari URL
         function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param);
         }
 
-    
+        // Dapatkan nilai subid dari URL
         const subid = getQueryParam('subid');
-        const campaign_id = getQueryParam('campaign_id');
-        const click_id = getQueryParam('click_id');
+        console.log("Subid: ", subid); // Logging untuk debugging
 
-   
-        const targetUrl = "https://in.tubecorporate.com/in/tcc/?promo=33254&mc=858227700&dc=1509379155&tc=1114223350&subid=" 
-            + encodeURIComponent(subid) 
-            + "&campaign_id=" + encodeURIComponent(campaign_id) 
-            + "&click_id=" + encodeURIComponent(click_id);
+        const targetUrl = "https://in.tubecorporate.com/in/tcc/?promo=33254&mc=858227700&dc=1509379155&tc=1114223350&subid=" + encodeURIComponent(subid);
 
-   
+        // Redirect ke URL tujuan
         window.location.href = targetUrl;
     </script>
 </head>
