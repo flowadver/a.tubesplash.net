@@ -3,17 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirection...</title>
-    <script>
-        
-        const currentUrl = new URL(window.location.href);
-        const params = currentUrl.search; 
+    <title>Redirecting</title>
+    <script type="text/javascript">
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
 
-        
-        window.location.href = "https://a.fullpornoflix.net/api/direct/479812" + params;
+    
+        const subid = getQueryParam('subid');
+        const campaign_id = getQueryParam('campaign_id');
+        const click_id = getQueryParam('click_id');
+
+   
+        const targetUrl = "https://in.tubecorporate.com/in/tcc/?promo=33254&mc=858227700&dc=1509379155&tc=1114223350&subid=" 
+            + encodeURIComponent(subid) 
+            + "&campaign_id=" + encodeURIComponent(campaign_id) 
+            + "&click_id=" + encodeURIComponent(click_id);
+
+   
+        window.location.href = targetUrl;
     </script>
 </head>
 <body>
-    <p>If it doesn't redirect automatically, click it <a href="https://a.fullpornoflix.net/api/direct/479812">here</a>.</p>
+    <p>Redirecting, please wait...</p>
 </body>
 </html>
