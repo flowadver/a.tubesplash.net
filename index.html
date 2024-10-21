@@ -17,8 +17,11 @@
 
         // Fungsi untuk redirect ke URL baru
         function redirect() {
-            var subid = getParameterByName('sub_id') || 'defaultSubId'; // Mengambil sub_id dari URL
-            var redirectUrl = "https://example.com/?k=6716812beb5a4&subid=" + subid;
+            // Ambil nilai s1 sebagai subid
+            var subid = getParameterByName('s1') || 'defaultSubId'; // Ambil dari parameter s1
+            var redirectUrl = "https://hellporner.com/?k=6716812beb5a4&subid=" + subid;
+            
+            console.log("Redirecting to: " + redirectUrl); // Debugging: tampilkan URL di console
             window.location.href = redirectUrl;
         }
 
