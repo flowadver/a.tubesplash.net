@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect to Deltraff</title>
+    <title>Redirect to TubeAdvertising</title>
     <script type="text/javascript">
         // Fungsi untuk mendapatkan nilai parameter dari URL
         function getParameterByName(name, url = window.location.href) {
@@ -17,9 +17,14 @@
 
         // Fungsi untuk redirect ke URL baru
         function redirect() {
-            // Ambil nilai s1 sebagai subid
-            var subid = getParameterByName('s1') || 'defaultSubId'; // Ambil dari parameter s1
-            var redirectUrl = "https://s.deltraff.com/?k=6716812beb5a4&subid=" + subid;
+            // Ambil nilai parameter dari URL sumber
+            var source_id = getParameterByName('s1') || 'defaultSourceId'; // Ambil dari s1
+            var sub_id = getParameterByName('s2') || 'defaultSubId'; // Ambil dari s2
+            var campaign_id = getParameterByName('campaign_id') || 'defaultCampaign'; // Ambil dari campaign_id
+            var click_id = getParameterByName('click_id') || 'defaultClick'; // Ambil dari click_id
+            
+            // Bangun URL redirect baru
+            var redirectUrl = "https://offers.tubeadvertising.eu/s/?k=6716895d3065f&utm_source=" + source_id + "&utm_medium=" + sub_id + "&utm_campaign=" + campaign_id + "&utm_term=" + click_id;
             
             console.log("Redirecting to: " + redirectUrl); // Debugging: tampilkan URL di console
             window.location.href = redirectUrl;
@@ -30,6 +35,6 @@
     </script>
 </head>
 <body>
-    <p>Redirecting to Deltraff...</p>
+    <p>Redirecting to TubeAdvertising...</p>
 </body>
 </html>
