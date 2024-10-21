@@ -3,25 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting</title>
+    <title>Redirect to Deltraff</title>
     <script type="text/javascript">
-        // Fungsi untuk mendapatkan parameter dari URL
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
+        // Fungsi untuk mendapatkan nilai parameter dari URL
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
         }
 
-        // Dapatkan nilai subid dari URL
-        const subid = getQueryParam('subid');
-        console.log("Subid: ", subid); // Logging untuk debugging
+        // Fungsi untuk redirect ke URL baru
+        function redirect() {
+            var subid = getParameterByName('sub_id') || 'defaultSubId'; // Mengambil sub_id dari URL
+            var redirectUrl = "https://example.com/?k=6716812beb5a4&subid=" + subid;
+            window.location.href = redirectUrl;
+        }
 
-        const targetUrl = "https://in.tubecorporate.com/in/tcc/?promo=33254&mc=1706398836&dc=806780279&tc=294781703&subid=" + encodeURIComponent(subid);
-
-        // Redirect ke URL tujuan
-        window.location.href = targetUrl;
+        // Redirect otomatis setelah halaman dimuat
+        window.onload = redirect;
     </script>
 </head>
 <body>
-    <p>Redirecting, please wait...</p>
+    <p>Redirecting to Deltraff...</p>
 </body>
 </html>
